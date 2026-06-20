@@ -21,4 +21,4 @@ jobs:
          sudo apt update
          sudo apt install tomcat9 -y
          sudo cp ROOT.war /var/lib/tomcat9/webapps/
-         sudo systemctl restart tomcat
+         sudo systemctl restart tomcat9
