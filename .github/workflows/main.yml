@@ -2,19 +2,21 @@ name: cicd
 
 on:
  push:
-  branches: master
+  branches: 
+  - master
 
 jobs:
   build:
    runs-on: self-hosted
-  steps:
-      -uses: actions/checkout@v4
-      -uses: actions/setup-java@v4
-      with:
-        java-version: '17'
-        distribution: 'temurin'
-       run: chmod +x build.sh
-       run: ./build.sh
-       run: |
-        sudo cp target/*.war /var/lib/tomcat9/webapps
-        sudo systemctl restart tomcat
+   
+   steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+      - run: chmod +x build.sh
+      - run: ./build.sh
+      - run: |
+         sudo cp target/*.war /var/lib/tomcat9/webapps
+         sudo systemctl restart tomcat
