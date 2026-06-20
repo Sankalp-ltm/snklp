@@ -18,6 +18,9 @@ jobs:
       - run: chmod +x build.sh
       - run: ./build.sh
       - run: |
+         sudo systemctl stop tomcat9
+         sudo rm -rf /var/lib/tomcat9/webapps/ROOT
+         sudo rm -f /var/lib/tomcat9/webapps/ROOT.war
          sudo apt update
          sudo apt install tomcat9 -y
          sudo cp ROOT.war /var/lib/tomcat9/webapps/
